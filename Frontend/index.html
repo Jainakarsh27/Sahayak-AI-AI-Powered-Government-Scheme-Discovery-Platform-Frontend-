@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizenship</title>
+
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Additional styles for header and language selector -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: hsla(123, 94%, 67%, 1);
+
+            background: linear-gradient(270deg, hsla(123, 94%, 67%, 1) 0%, hsla(308, 78%, 70%, 1) 50%, hsla(209, 93%, 73%, 1) 100%);
+
+            background: -moz-linear-gradient(270deg, hsla(123, 94%, 67%, 1) 0%, hsla(308, 78%, 70%, 1) 50%, hsla(209, 93%, 73%, 1) 100%);
+
+            background: -webkit-linear-gradient(270deg, hsla(123, 94%, 67%, 1) 0%, hsla(308, 78%, 70%, 1) 50%, hsla(209, 93%, 73%, 1) 100%);
+
+            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#5CFA64", endColorstr="#EE77DE", GradientType=1 );
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #ccc;
+        }
+         .top-image-container img {
+            width:999px;
+            height: auto;
+            object-fit: cover;
+        }
+         h1 {
+            margin: 98;
+            color: rgb(241, 9, 9);
+            text-align: right;
+            font-size: 3rem; /* Adjust this value for the desired size */
+        }
+        fieldset {
+            margin: 20px auto;
+            width: 40%;
+            border: 2px solid #ccc;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: white;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        marquee {
+            color: #333;
+            font-weight: bold;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .language-selector {
+            position: relative;
+        }
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .language-dropdown a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        .language-dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        main {
+            padding: 20px;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #4CAF50;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+       .table-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-around;
+        }
+
+       
+
+        .table-item img {
+            width:175%;
+            height: auto;
+            border-radius: 2px;
+        }
+
+        .table-item img {
+            width: 75%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .heading {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .plan {
+            font-size: 18px;
+            color: #777;
+        }
+
+        .content {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .border {
+            border-top: 3px solid #4CAF50;
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+
+        .desc {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            display: inline;
+            color: #f39c12;
+        }
+
+        .card .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .card .desc {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        .card .name {
+            font-size: 14px;
+            color: #777;
+        }
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px; /* Adjust spacing between boxes */
+        }
+
+        .box {
+            width: calc(33.33% - 20px); /* Ensures three boxes per row with spacing */
+            box-sizing: border-box;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: white;
+            text-align: center;
+        }
+        .grid-container {
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        justify-content: center;
+        }
+
+        .table-item {
+            text-align: center;
+            max-width: 10px;
+            border: 100px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="logo">Sahayak-AI</div>
+    <div class="language-selector">
+        <span>Select Language</span>
+        <div class="language-dropdown">
+            <a href="#" onclick="changeLanguage('en')">English</a>
+            <a href="#" onclick="changeLanguage('hi')">Hindi</a>
+            <!-- Additional language options -->
+        </div>
+    </div>
+</header>
+
+
+<header>
+    <h1 style="color: BLUE; text-align: center;">Sahayak-AI</h1>
+    <div class="navbar">
+     <!-- Corrected Anchor Tag -->
+    <a href="file:///C:/Users/91982/Downloads/sahayak(1).html" title="Go to Home">
+        <i class="fa fa-fw fa-home" aria-hidden="true"></i> Home
+    </a>
+    <!-- Corrected Anchor Tag -->
+    <a href="about_us.html" title="Learn more about us">
+        <i class="fa fa-fw fa-book" aria-hidden="true"></i> About us
+    </a>    <a href="file:///C:/Users/91982/Downloads/CONTACT_US.html">
+        <i class="fa fa-fw fa-phone"></i> Contact Us
+    </a>
+    <!-- Login Button -->
+            <a href="file:///C:\Users\91982\Downloads\kk.html" class="login-button">
+                <i class="fa fa-fw fa-sign-in"></i>Login
+            </a>
+        </div>
+
+</header>
+<!-- Header Section -->
+<header>
+    <!-- Image on the Left -->
+    <div class="top-image-container">
+        <img srcset="https://cdn.myscheme.in/images/slideshow/2-full.webp?w=640&amp;q=75 640w, 
+                    https://cdn.myscheme.in/images/slideshow/2-full.webp?w=750&amp;q=75 750w, 
+                    https://cdn.myscheme.in/images/slideshow/2-full.webp?w=828&amp;q=75 828w, 
+                    https://cdn.myscheme.in/images/slideshow/2-full.webp?w=1080&amp;q=75 1080w, 
+                    https://cdn.myscheme.in/images/slideshow/2-full.webp?w=1200&amp;q=75 1200w, 
+                    https://cdn.myscheme.in/images/slideshow/2-full.webp?w=1920&amp;q=75 1920w, 
+                    https://cdn.myscheme.in/images/slideshow/2-full.webp?w=2048&amp;q=75 2048w, 
+                    https://cdn.myscheme.in/images/slideshow/2-full.webp?w=3840&amp;q=75 3840w" alt="New Slideshow Image" sizes="50vw" src="https://cdn.myscheme.in/images/slideshow/2-full.webp?w=3840&amp;q=75" decoding="async">
+    </div>
+
+    <!-- H1 Text on the Right -->
+    <h1><center>
+        "Welcome to Sahayak-AI:<br> Students Discover Schemes <br> for You"
+    </center></h1>
+</header>
+
+<!-- Form Section -->
+<form name="myForm" action="#" onsubmit="return validateForm()" method="post">
+    <fieldset>
+        <h2>
+            <center>Find personalised Schemes Based On Eligibility On Sahayak-AI</center>
+        </h2>
+        
+<!-- Link to Local HTML File -->
+        <a href="file:///C:\Users\91982\Downloads\hhh.html" class="button">
+            <center>TAKE TEST</center>
+        </a>
+        
+    </fieldset>
+</form>
+<h1><center>Find schemes based<br>
+on categories</center></h1>
+
+<div class="grid-container">
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px auto 20px; padding: 0px; max-width:100% ;">
+            <img style="display: block; max-width: 100%; width: 46px; height: 46px; background: none; opacity: 1; border: 0px; margin: auto; padding: 0px;" srcset="https://cdn.myscheme.in/images/categories/Education.svg 1x, https://cdn.myscheme.in/images/categories/Education.svg 2x" alt="Education &amp; Learning Icon" title="Education" src="https://cdn.myscheme.in/images/categories/Education.svg" decoding="async" class="border-0 w-10 h-10 block">
+        </span>
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Education &amp; Learning</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://knowledge.wharton.upenn.edu/wp-content/uploads/2008/08/objective-of-education-is-learning-feature-1199x815.jpg" alt="Education &amp; Learning Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>This section includes scholarships, financial aid, skill development programs, digital learning initiatives, and education loan schemes designed to make quality education accessible for students at all levels.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Image Section -->
+        <img src="https://cdn.myscheme.in/images/categories/Agriculture.svg" alt="Agriculture, Rural &amp; Environment" title="Agriculture" style="width: 46px; height: 46px; display: block; margin: 0 auto 20px; object-fit: contain;">
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Agriculture, Rural &amp; Environment</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://media.istockphoto.com/id/543212762/photo/tractor-cultivating-field-at-spring.jpg?s=1024x1024&amp;w=is&amp;k=20&amp;c=yCC31xDwz8uezGmsEWpCcA5QMW95C8f-COaKY4_eJig=" alt="Representative Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>This category includes government schemes and initiatives aimed at supporting farmers, rural development, and environmental conservation. It covers agricultural subsidies, irrigation projects, organic farming incentives, rural employment programs, and environmental sustainability efforts.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px auto 20px; padding: 0px; max-width: 100%;">
+            <img style="display: block; max-width: 100%; width: 46px; height: 46px; background: none; opacity: 1; border: 0px; margin: auto; padding: 0px;" srcset="https://cdn.myscheme.in/images/categories/Health.svg 1x, https://cdn.myscheme.in/images/categories/Health.svg 2x" alt="Health &amp; Wellness Icon" title="Health" src="https://cdn.myscheme.in/images/categories/Health.svg" decoding="async" class="border-0 w-10 h-10 block">
+        </span>
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Health &amp; Wellness</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://img.freepik.com/free-vector/healthy-people-carrying-different-icons_53876-66139.jpg?t=st=1736688596~exp=1736692196~hmac=7b4066bb02164e2cd5f8d41dce70d5a8327cbab5c2dfad44d0a0640241a8f8fb&amp;w=826" alt="Health &amp; Wellness Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Government programs under this category focus on public healthcare, medical insurance, maternity benefits, free vaccinations, nutrition programs, and financial support for critical illnesses and disabilities.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Image Section -->
+        <img src="https://cdn.myscheme.in/images/categories/Women.svg" srcset="https://cdn.myscheme.in/images/categories/Women.svg 1x, https://cdn.myscheme.in/images/categories/Women.svg 2x" alt="Women and Child" title="Women" decoding="async" class="border-0" style="width: 46px; height: 46px; display: block; margin: 0 auto 20px; object-fit: contain;">
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Women and Child</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://www.niti.gov.in/sites/default/files/2022-11/women.jpg" alt="Women and Child Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Features government schemes that focus on women’s empowerment, maternal health, child welfare, education for girls, financial assistance for women entrepreneurs, and protection programs.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px auto 20px; padding: 0px; max-width: 100%;">
+            <img style="display: block; max-width: 100%; width: 46px; height: 46px; background: none; opacity: 1; border: 0px; margin: auto; padding: 0px;" srcset="https://cdn.myscheme.in/images/categories/Banking.svg 1x, https://cdn.myscheme.in/images/categories/Banking.svg 2x" alt="Banking, Financial Services, and Insurance Icon" title="Banking, Financial Services, and Insurance" src="https://cdn.myscheme.in/images/categories/Banking.svg" decoding="async" class="border-0 w-10 h-10 block">
+        </span>
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Banking, Financial Services, and Insurance</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://img.etimg.com/thumb/msid-48535496,width-300,height-225,imgsize-109711,resizemode-75/.jpg" alt="Banking, Financial Services, and Insurance Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Government schemes in this category provide financial assistance, loans, and insurance services to individuals and businesses. It includes subsidies for startups, agricultural loans, microfinance support, pension schemes, and insurance plans for different sectors.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px auto 20px; padding: 0px; max-width: 100%;">
+            <img style="display: block; max-width: 100%; width: 46px; height: 46px; background: none; opacity: 1; border: 0px; margin: auto; padding: 0px;" srcset="https://cdn.myscheme.in/images/categories/Housing.svg 1x, https://cdn.myscheme.in/images/categories/Housing.svg 2x" alt="Housing &amp; Shelter Icon" title="Housing" src="https://cdn.myscheme.in/images/categories/Housing.svg" decoding="async" class="border-0 w-10 h-10 block">
+        </span>
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Housing &amp; Shelter</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://starofmysore.com/wp-content/uploads/2018/07/news-27-3.jpg" alt="Housing &amp; Shelter Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Covers government initiatives that provide affordable housing, rental assistance, slum rehabilitation, and financial aid for home construction and improvement, ensuring safe shelter for all citizens.</p>
+        </article>
+    </div>
+    
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px auto 20px; padding: 0px; max-width: 100%;">
+            <img style="display: block; max-width: 100%; width: 46px; height: 46px; background: none; opacity: 1; border: 0px; margin: auto; padding: 0px;" srcset="https://cdn.myscheme.in/images/categories/Public%20Safety.svg 1x, https://cdn.myscheme.in/images/categories/Public%20Safety.svg 2x" alt="Public Safety, Law &amp; Justice Icon" title="Public Safety" src="https://cdn.myscheme.in/images/categories/Public%20Safety.svg" decoding="async" class="border-0 w-10 h-10 block">
+        </span>
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Public Safety, Law &amp; Justice</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://thecolumnofcurae.wordpress.com/wp-content/uploads/2021/09/justice-photo.jpg?w=485" alt="Public Safety, Law &amp; Justice Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>This category features programs that promote legal assistance, crime prevention, emergency services, consumer protection, and initiatives aimed at ensuring justice and safety for all citizens.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <img src="https://cdn.myscheme.in/images/categories/Sports.svg" srcset="https://cdn.myscheme.in/images/categories/Sports.svg 1x, https://cdn.myscheme.in/images/categories/Sports.svg 2x" alt="Sports &amp; Culture" title="Sports" decoding="async" class="border-0" style="width: 46px; height: 46px; display: block; margin: 0 auto 20px; object-fit: contain;">
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Sports &amp; Culture</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://cdn.wrytin.com/images/wrytup/r/1024/sports-jtukfk0y.jpeg" alt="Sports and Culture Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Supports schemes that promote sports development, athlete funding, cultural preservation, art scholarships, and infrastructure for sports and recreational activities.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <img src="https://cdn.myscheme.in/images/categories/Utility.svg" srcset="https://cdn.myscheme.in/images/categories/Utility.svg 1x, https://cdn.myscheme.in/images/categories/Utility.svg 2x" alt="Utility &amp; Sanitation" title="Utility" decoding="async" class="border-0" style="width: 46px; height: 46px; display: block; margin: 0 auto 20px; object-fit: contain;">
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Utility &amp; Sanitation</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://sakshingo.org/wp-content/uploads/2020/07/CABRI-WASH-Featured-Image_0e61eb07530e09f0965cd7984b82b4a2.jpg" alt="Utility and Sanitation Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Includes programs that improve public utilities such as electricity, water supply, sanitation, waste management, and initiatives to enhance urban and rural hygiene.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px auto 20px; padding: 0px; max-width: 100%;">
+            <img style="display: block; max-width: 100%; width: 46px; height: 46px; background: none; opacity: 1; border: 0px; margin: auto; padding: 0px;" srcset="https://cdn.myscheme.in/images/categories/Business.svg 1x, https://cdn.myscheme.in/images/categories/Business.svg 2x" alt="Business &amp; Entrepreneurship Icon" title="Business &amp; Entrepreneurship" src="https://cdn.myscheme.in/images/categories/Business.svg" decoding="async" class="border-0 w-10 h-10 block">
+        </span>
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Business &amp; Entrepreneurship</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://img.freepik.com/free-photo/medium-shot-colleagues-working-together_23-2150152266.jpg?t=st=1736687421~exp=1736691021~hmac=e1cec899bd2bcd6a212b5c9b6db6d87449323ec32117be43aa34f09d2c8bcf74&amp;w=996" alt="Business and Entrepreneurship Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>For aspiring and existing entrepreneurs, this category covers government support programs such as startup funding, MSME development, business incubation, tax benefits, and financial aid for innovation and new ventures.</p>
+        </article>
+    </div>
+
+<div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+    <!-- SVG Icon Section -->
+    <span style="box-sizing: border-box; display: block; width: 46px; height: 46px; margin: 0 auto 20px;">
+        <img 
+            style="display: block; width: 100%; height: 100%; object-fit: contain; background: none; border: 0; padding: 0;" 
+            src="https://yourhostedlink.com/science-logo.svg" 
+            srcset="https://yourhostedlink.com/science-logo.svg 1x, https://yourhostedlink.com/science-logo.svg 2x" 
+            alt="Science, IT & Communications Icon" 
+            title="Science, IT & Communications" 
+            decoding="async" 
+            class="border-0 w-10 h-10 block" 
+            onerror="this.onerror=null; this.src='https://via.placeholder.com/46';">
+    </span>
+
+    <!-- Heading Section -->
+    <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Science, IT &amp; Communications</h2>
+
+    <!-- Representative Image Section -->
+    <img 
+        src="https://cdn.vectorstock.com/i/1000v/05/02/science-related-icons-image-vector-10800502.avif" 
+        alt="Science, IT & Communications Image" 
+        style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" 
+        onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400';">
+
+    <!-- Content Section -->
+    <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+        <p>Includes government funding for research and development, digital transformation programs, internet accessibility projects, IT training initiatives, and support for emerging technologies like AI and blockchain.</p>
+    </article>
+</div>
+
+
+
+
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <img src="https://cdn.myscheme.in/images/categories/Skills.svg" srcset="https://cdn.myscheme.in/images/categories/Skills.svg 1x, https://cdn.myscheme.in/images/categories/Skills.svg 2x" alt="Skills &amp; Employment" title="Skills" decoding="async" class="border-0" style="width: 46px; height: 46px; display: block; margin: 0 auto 20px; object-fit: contain;">
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Skills &amp; Employment</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://www.oitcinterfor.org/sites/default/files/img_hechos_noticias/women_web.jpg" alt="Skills &amp; Employment Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Provides information on job training, skill enhancement programs, employment generation schemes, and government-backed initiatives to create more job opportunities across industries.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <img src="https://cdn.myscheme.in/images/categories/Social%20Welfare.svg" srcset="https://cdn.myscheme.in/images/categories/Social%20Welfare.svg 1x, https://cdn.myscheme.in/images/categories/Social%20Welfare.svg 2x" alt="Social Welfare &amp; Empowerment" title="Social Welfare" decoding="async" class="border-0" style="width: 46px; height: 46px; display: block; margin: 0 auto 20px; object-fit: contain;">
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Social Welfare &amp; Empowerment</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://csrbox.org/company/proj_img/1527923164ind_img_09.jpg" alt="Social Welfare Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Social Welfare focuses on initiatives and programs aimed at uplifting underprivileged communities, providing mental health support, and ensuring access to essential resources and opportunities.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <img src="https://cdn.myscheme.in/images/categories/Transport.svg" srcset="https://cdn.myscheme.in/images/categories/Transport.svg 1x, https://cdn.myscheme.in/images/categories/Transport.svg 2x" alt="Transport &amp; Infrastructure" title="Transport" decoding="async" class="border-0" style="width: 46px; height: 46px; display: block; margin: 0 auto 20px; object-fit: contain;">
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Transport &amp; Infrastructure</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://i.filecdn.in/755esias/RoadinfrastructureinIndia-1678783904750.jpg" alt="Transport and Infrastructure Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Encompasses welfare programs for marginalized communities, differently-abled individuals, senior citizens, and economically weaker sections, ensuring social equity and inclusion.</p>
+        </article>
+    </div>
+
+    <div class="table-item" style="text-align: center; margin: 20px auto; max-width: 600px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff;">
+        <!-- SVG Icon Section -->
+        <img src="https://cdn.myscheme.in/images/categories/Travel.svg" srcset="https://cdn.myscheme.in/images/categories/Travel.svg 1x, https://cdn.myscheme.in/images/categories/Travel.svg 2x" alt="Travel &amp; Tourism" title="Travel" decoding="async" class="border-0" style="width: 46px; height: 46px; display: block; margin: 0 auto 20px; object-fit: contain;">
+    
+        <!-- Heading Section -->
+        <h2 class="heading" style="font-size: 24px; color: #333; margin-bottom: 20px;">Travel &amp; Tourism</h2>
+    
+        <!-- Representative Image Section -->
+        <img src="https://img.freepik.com/premium-photo/flat-illustration-popular-tourist-land-marks-travel-related-items-world-tourism-day_978786-2531.jpg?w=740" alt="Travel and Tourism Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    
+        <!-- Content Section -->
+        <article class="content" style="font-size: 16px; color: #555; line-height: 1.6;">
+            <p>Covers schemes related to tourism development, eco-tourism, heritage site preservation, subsidies for tourism businesses, and promotion of domestic and international travel.</p>
+        </article>
+    </div>
+
+</div>
+
+<br>
+
+
+<div class="border">
+    <h1 class="desc"><center>"Empowering Every Citizen, Simplifying Every Process – Sahayak AI, Your Guide to Government Benefits!"</center></h1>
+</div>
+
+<div class="main-container">
+    <div class="cards">
+        <div class="card card1">
+            <div>
+                <ul>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                </ul>
+            </div>
+            <p class="close"><i class="fa-solid fa-xmark"></i></p>
+            <p class="desc">Sahayak AI made it so easy for me to find and apply for government schemes. The document upload feature is smooth, and I can preview my PDFs before submission. Great initiative!.
+</p>
+            <p class="name">–Ravi Sharma (Farmer, Uttar Pradesh)
+</p>
+        </div>
+
+        <div class="card card2">
+            <div>
+                <ul>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                </ul>
+            </div>
+            <p class="close"><i class="fa-solid fa-xmark"></i></p>
+            <p class="desc">I love how simple and user-friendly the platform is. It quickly matched me with relevant business loans and government support programs. A must-use for every entrepreneur!.</p>
+            <p class="name">– Pooja Mehta (Entrepreneur, Maharashtra)
+</p>
+        </div>
+
+        <div class="card card3">
+            <div>
+                <ul>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                </ul>
+            </div>  <p class="close"><i class="fa-solid fa-xmark"></i></p>
+            <p class="desc">Finding scholarships and education schemes has never been easier. The AI recommendations saved me a lot of time, and the document verification process was seamless!</p> 
+<p class="name">- Amit Kumar (Student, Delhi)
+</p>
+           
+        </div>
+
+        <div class="card card4">
+            <div>
+                <ul>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                    <li><i class="fa-solid fa-star"></i></li>
+                </ul>
+            </div>
+            <p class="close"><i class="fa-solid fa-xmark"></i></p>
+            <p class="desc">I was struggling to understand which welfare schemes I was eligible for. Thanks to Sahayak AI’s voice assistance in my local language, I easily applied for the right&nbsp;benefits!.</p>
+<p class="name">- Anita Verma (Housewife, Rajasthan)
+</p>
+         
+        </div>
+    </div>
+</div>
+
+
+
+<main id="main-section"> </main>
+<footer id="footer">
+    <h2>Sahayak-AI</h2>
+    <p class="footer-description">
+        Sahayak AI is an innovative platform that simplifies access to government schemes and services using AI technologies like ML, NLP, and CV, ensuring personalized, multilingual, and efficient public service delivery for all citizens.
+    </p>
+    <div class="footer-bottom" style="background-color: blue; text-align: center; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+   <h2 style="color: white; font-weight: bold; margin: 0;">
+        2025 Sahayak-AI. All rights reserved. <a href="#" style="color: white; text-decoration: underline;">CITIZENSHIP</a>
+    </h2>
+</div>
+
+
+
+
+</footer>
+
+<script>
+
+        function handleCredentialResponse(response) {
+            // Decode the credential response (JWT) and use the data as needed
+            const data = jwt_decode(response.credential);
+            console.log(data);
+            alert("Signed in as: " + data.email);
+        }
+
+        window.onload = function () {
+            google.accounts.id.initialize({
+                client_id: 'YOUR_GOOGLE_CLIENT_ID',
+                callback: handleCredentialResponse
+            });
+            google.accounts.id.renderButton(
+                document.getElementById('googleSignInBtn'),
+                { theme: 'outline', size: 'large' } // customization options
+            );
+            google.accounts.id.prompt(); // also display the One Tap dialog
+        };
+    </script>
+
+
+</body></html>

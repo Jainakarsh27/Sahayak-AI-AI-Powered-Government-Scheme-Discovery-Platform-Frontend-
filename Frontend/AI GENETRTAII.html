@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahayak-AI</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .language-selector {
+            position: relative;
+        }
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .language-dropdown a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        .language-dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Popup Box */
+        .popup-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            text-align: center;
+        }
+        .popup-box h2 {
+            color: #4CAF50;
+        }
+
+        /* Notification Box */
+        .notification-box {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="logo">Sahayak-AI</div>
+    <div class="language-selector">
+        <span>Select Language</span>
+        <div class="language-dropdown">
+            <a href="#" onclick="changeLanguage('en')">English</a>
+            <a href="#" onclick="changeLanguage('hi')">Hindi</a>
+            <!-- Additional language options -->
+        </div>
+    </div>
+</header>
+<header>
+    <h1 style="color: BLUE; text-align: center;">Sahayak-AI</h1>
+    <div class="navbar">
+    <a href="file:///C:\Users\91982\Downloads\sahayak(1).html">
+    <i class="fa fa-fw fa-home"></i>Home
+</a>
+<a href="doctor.html"><i class="fa fa-fw fa-book"></i>About us </a>
+        <a href="file:///C:/Users/91982/Downloads/CONTACT_US.html">
+    <i class="fa fa-fw fa-phone"></i> Contact Us
+</a>
+ <!-- Login Button -->
+        <a href="file:///C:\Users\91982\Downloads\kk.html">
+            <i class="fa fa-fw fa-sign-in"></i>Login
+        </a>
+    </div>
+
+</header>
+
+<form name="myForm" action="#" onsubmit="return validateForm()" method="post">
+    <fieldset style="color: black;">
+        <h1 style="color: rgb(241, 9, 9); text-align: center;">Welcome to Sahayak-AI</h1>
+        <h2 style="text-align: center;">Find Personalised Schemes Based on Eligibility</h2>
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+        </div>
+
+        <center>
+            <button type="submit" class="button">Submit</button>
+            <button type="button" class="button" onclick="startDictation()">🎙 Speak</button>
+        </center>
+    </fieldset>
+</form>
+
+<!-- Popup Box -->
+<div class="popup-box" id="popupBox">
+    <h2>Your application is submitted!</h2>
+    <p>Wait for our reply. We will reply to you on your email.</p>
+</div>
+
+<!-- Notification Box -->
+<div class="notification-box" id="notificationBox">
+    Your application is submitted!
+</div>
+
+<script>
+    // Language change function
+    function changeLanguage(lang) {
+        const elements = document.querySelectorAll('header, h1, h2, label');
+        const translations = {
+            'en': {
+                'header': 'Sahayak-AI',
+                'h1': 'Welcome to Sahayak-AI',
+                'h2': 'Find Personalised Schemes Based on Eligibility',
+                'name': 'Name:',
+                'email': 'Email:',
+                'message': 'Message:'
+            },
+            'hi': {
+                'header': 'सहायक-AI',
+                'h1': 'सहायक-AI में आपका स्वागत है',
+                'h2': 'पात्रता के आधार पर व्यक्तिगत योजनाएँ खोजें',
+                'name': 'नाम:',
+                'email': 'ईमेल:',
+                'message': 'संदेश:'
+            }
+        };
+
+        const translation = translations[lang];
+        elements.forEach(el => {
+            if (el.tagName === 'H1') el.textContent = translation.h1;
+            if (el.tagName === 'H2') el.textContent = translation.h2;
+        });
+    }
+
+    // Form validation function
+    function validateForm() {
+        const name = document.forms["myForm"]["name"].value;
+        const email = document.forms["myForm"]["email"].value;
+        if (name == "" || email == "") {
+            alert("Name and Email must be filled out!");
+            return false;
+        }
+
+        // Show popup and notification
+        document.getElementById('popupBox').style.display = 'block';
+        document.getElementById('notificationBox').style.display = 'block';
+
+        setTimeout(() => {
+            document.getElementById('notificationBox').style.display = 'none';
+        }, 5000);
+
+        return false;
+    }
+
+    // Speech-to-text function
+    function startDictation() {
+        if (window.hasOwnProperty('webkitSpeechRecognition')) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.lang = "en-US";
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                document.getElementById('message').value = event.results[0][0].transcript;
+                recognition.stop();
+            };
+
+            recognition.onerror = function() {
+                recognition.stop();
+            };
+        } else {
+            alert("Speech recognition not supported on your browser!");
+        }
+    }
+</script>
+</body>
+</html>

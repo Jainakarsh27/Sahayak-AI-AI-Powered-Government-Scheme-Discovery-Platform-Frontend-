@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #8fd5d5;
+        }
+
+        header {
+            width: 100%;
+            background-color: #1a73e8;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ffcc00;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 0.4rem;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            background-color: #1a73e8;
+            color: white;
+            border-radius: 0.4rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #1558b0;
+        }
+
+        .google-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            background-color: white;
+            color: #4285F4;
+            border-radius: 0.4rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s;
+        }
+
+        .google-button:hover {
+            background-color: #f8f9fa;
+        }
+
+        .google-button svg {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .toggle-link {
+            margin-top: 1rem;
+            color: #1a73e8;
+            cursor: pointer;
+            text-decoration: underline;
+            display: block;
+        }
+
+        .popup {
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1a73e8;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Sahayak-AI</h1>
+        <div class="navbar">
+            <a href="file:///C:\Users\91982\Downloads\sahayak(1).html">
+                <i class="fa fa-fw fa-home"></i> Home
+            </a>       
+           <a href="file:///C:/Users/91982/Downloads/about_us.html">
+                 <i class="fa fa-fw fa-home"></i> About Us
+</a>
+            <a href="file:///C:/Users/91982/Downloads/CONTACT_US.html">
+                <i class="fa fa-fw fa-phone"></i> Contact Us
+            </a>
+            <a href="file:///C:\Users\91982\Downloads\kk.html" class="login-button">
+                <i class="fa fa-fw fa-sign-in"></i> Login
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 id="form-title">Login</h2>
+        <!-- Login Form -->
+        <div id="login-form">
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button class="btn" onclick="login()">Login</button>
+            <button class="google-button" onclick="googleSignIn()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                    <g>
+                        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                        <path fill="none" d="M0 0h48v48H0z"></path>
+                    </g>
+                </svg>
+                Sign in with Google
+            </button>
+            <span class="toggle-link" onclick="toggleForm()">Don't have an account? Sign Up</span>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signup-form" style="display: none;">
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <input type="text" id="surname" placeholder="Surname">
+            </div>
+            <div class="form-group">
+                <input type="text" id="contact" placeholder="Contact No">
+            </div>
+            <div class="form-group">
+                <input type="email" id="gmail" placeholder="Gmail ID">
+            </div>
+            <div class="form-group">
+                <input type="password" id="new-password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="password" id="confirm-password" placeholder="Confirm Password">
+            </div>
+            <button class="btn" onclick="signUp()">Sign Up</button>
+            <button class="google-button" onclick="googleSignIn()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                    <g>
+                        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                        <path fill="none" d="M0 0h48v48H0z"></path>
+                    </g>
+                </svg>
+                Sign in with Google
+            </button>
+            <span class="toggle-link" onclick="toggleForm()">Already have an account? Login</span>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const formTitle = document.getElementById('form-title');
+
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                formTitle.textContent = 'Login';
+            } else {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                formTitle.textContent = 'Sign Up';
+            }
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            alert(`Logged in as ${username}`);
+        }
+
+        // Function to connect the frontend to the backend
+async function signUp() {
+    const name = document.getElementById('name').value;
+    // Assuming 'gmail' from kk.html is the user's email
+    const email = document.getElementById('gmail').value; 
+    const password = document.getElementById('new-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+    }
+    
+    // 1. Define the data to send to the backend
+    const userData = {
+        name: name,
+        email: email,
+        password: password
+    };
+
+    try {
+        // 2. Use the 'fetch' API to send a POST request to the backend
+        const response = await fetch('http://localhost:3000/api/auth/signup', {
+            method: 'POST', // The HTTP method we defined for registration
+            headers: {
+                'Content-Type': 'application/json' // Telling the server the data is JSON
+            },
+            body: JSON.stringify(userData) // Convert the JavaScript object to a JSON string
+        });
+
+        const data = await response.json(); // Parse the JSON response from the server
+
+        if (response.ok) { // Status codes 200-299
+            alert(data.message); 
+            // Optional: Redirect to login page or switch to login form
+            // window.location.href = 'login.html'; 
+        } else {
+            // Handle errors (e.g., user already exists, validation failed)
+            alert('Signup Failed: ' + data.message);
+        }
+
+    } catch (error) {
+        console.error('Error during signup:', error);
+        alert('An error occurred. Check the server connection.');
+    }
+}
+
+// Similarly, update your login() function to send email and password to /api/auth/login
+    </script>
+</body>
+
+</html>
